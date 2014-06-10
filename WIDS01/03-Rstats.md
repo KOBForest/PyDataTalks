@@ -25,3 +25,6 @@ Introduction to R
 - Many users think of R as a statistics system. We prefer to think of it of an environment within which statistical techniques are implemented. R can be extended (easily) via packages. There are about eight packages supplied with the R distribution and many more are available through the CRAN family of Internet sites covering a very wide range of modern statistics.
 
 - R has its own LaTeX-like documentation format, which is used to supply comprehensive documentation, both on-line in a number of formats and in hardcopy.
+
+#### References
+- http://blog.revolutionanalytics.com/2014/04/seven-quick-facts-about-r.html?utm_content=buffere834a&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
