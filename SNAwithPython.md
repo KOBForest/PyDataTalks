@@ -7,3 +7,5 @@ by Aric Hagberg & Drew Conway
 http://www.cl.cam.ac.uk/~cm542/teaching/2011/stna-pdfs/stna-lecture11.pdf
 
 http://www.statistics.com/python-social-data/
+
+http://www.slideshare.net/rik0/complex-and-social-network-analysis-in-python
