@@ -1,0 +1,148 @@
+### Question 1
+When a distribution is extremely skewed, the best measure of central tendency is typically the:
+mean
+median
+standard deviation
+standard error
+### Question 2
+According to the central limit theorem, the shape of the distribution of sample means is always:
+- uniform
+- negatively skewed
+- positively skewed
+- normal
+### Question 3
+The standard deviation of the distribution of sample means is called:
+likely error
+standard error
+special error
+percent error
+### Question 4
+Systematic measurement error represents:
+- bias
+- chance error
+- outliers
+- covariance
+### Question 5
+What value is expected for the t statistic if the null hypothesis is true?
+- 1.96
+- 1
+- 0
+- 2
+### Question 6
+What happens to the t-distribution as sample size increases?
+The distribution becomes uniform
+The distribution appears more and more like a normal distribution
+The distribution appears less and less like a normal distribution
+The distribution is unaffected
+### Question 7
+Degrees of freedom (df) for the single sample t-test is equal to:
+- N - 1
+- the square root of N 
+- N + 1
+- N
+### Question 8
+In an independent t-test, what is the standard error of the difference?
+the pooled standard deviation
+the standard deviation of the distribution of sample mean differences
+the standard deviation of the distribution of sample means
+the standard deviation of the sample means
+### Question 9
+How many subjects were included in an independent samples t-test if a researcher reports t(20) = 3.68
+22
+20
+18
+19
+### Question 10
+In a factorial ANOVA, a significant interaction effect indicates that:
+the influence of one IV is the same for each level of the other IV
+the influence of one IV is different from the influence of the other IV
+the influence of one IV is not the same for each level of the other IV
+the dependent variable differs depending on the level of an independent variable (IV)
+### Question 11
+In any factorial ANOVA, if FAxB is significant, then which of the following is true?
+FA is significant
+FB is significant
+Both FA and FB are significant
+None of the above
+### Question 12
+The General Linear Model assumes that the relationships between predictor variables (X’s) and the outcome variable (Y) are:
+Linear
+Additive
+Linear and additive
+None of the above
+### Question 13
+In null hypothesis significance testing, if the probability of a Type II error is .20 and alpha = .04, then what is power?
+.20
+.40
+.60
+.80
+### Question 14
+If the 68% confidence interval for the regression coefficient for predictor X does not contain zero, can you safely assume that the effect of X on an outcome variable Y will be significant with alpha = .05?
+Yes
+No
+### Question 15
+In a standard regression analysis, if the unstandardized regression coefficient is 2 and the standard error of the regression coefficient is 4 then what is the corresponding t-value?
+t = 0.25
+t = 0.50
+t = 0.75
+t = 1
+### Question 16
+Pearson’s product moment correlation coefficient (r) is used when X and Y are:
+Both nominal variables
+Both continuous variables
+Both dichotomous variables
+Both categorical variables
+### Question 17
+In a regression analysis, which distribution will have the largest standard deviation?
+the observed scores on the outcome variable, Y
+the residuals
+the predicted scores on the outcome variable, Ŷ
+the standardized regression coefficients
+### Question 18
+In multiple regression analysis, the null hypothesis assumes that the unstandardized regression coefficient, B, is zero. The standard error of the regression coefficient depends on:
+Sample size
+Sample size and the Sum of Squared Residuals
+Sample size, Sum of Squared Residuals, and the number of other predictor variables in the regression model
+Sample size, Sum of Squared Residuals, the number of other predictor variables in the regression model, and the p-value
+### Question 19
+Which of the following r-values indicates the strongest relationship between two variables?
++.65
+-.89
++.10
+-.10
+### Question 20
+What is the slope in the following regression equation? Y = 2.69X – 3.92
+2.69
+-2.69
+3.92
+-3.92
+### Question 21
+When we square the correlation coefficient to produce r2, the result is equal to the:
+proportion of variance in Y not accounted for by X
+proportion of variance in Y accounted for by X
+sum of squared residuals
+standard error
+### Question 22
+When testing for mediation, what significance test would you conduct to further strengthen your argument for (or against) mediation?
+Tukey’s HSD
+Fisher’s Exact Test
+Sobel Test
+Bonferroni correction
+### Question 23
+Why it is preferable to conduct a one-way ANOVA to compare multiple sample means rather than a series of independent t-tests?
+More powerful error term
+Reduces the likelihood of Type I error
+Both a and b
+None of the above
+### Question 24
+The sphericity assumption assumes:
+homogeneity of variance
+homogeneity of covariance
+both a and b
+none of the above
+### Question 25
+Suppose a dependent t-test is conducted to compare scores in an experiment with a pre/post design (like the working memory training example). Suppose two experiments were conducted: A and B. In Experiment A the correlation between pre and post scores was high. In Experiment B the correlation between pre and post scores was low. Which Experiment would have a lower standard error, and why?
+Experiment A would have a lower standard error because the variance associated with subjects is more systematic.
+Experiment B would have a lower standard error because the variance associated with subjects is more systematic.
+Experiment A would have a lower standard error because the variance associated with subjects is less systematic.
+Experiment B would have a lower standard error because the variance associated with subjects is less systematic.

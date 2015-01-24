@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+
+%opening
+\usepackage{framed}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\begin{document}
+
+
+\section{Statistics One : Week 10 Quiz}
+%--------------------------------------
+
+Welcome to assignment 10! This week we are going to work on an example at the intersection of decision-making and global warming. 
+
+\begin{itemize}
+\item The simulated dataset includes a dependent variable, change, for a list of 27 countries. 
+
+\item Change indicates whether these countries are willing to take action now against global warming, or if they would rather wait and see (1 = act now, 0 = wait and see). 
+
+\item Predictors include: median age (age), education index (educ), gross domestic product (gdp), and CO2 emissions (co2).
+\end{itemize}
+%------------------------------------------------%
+\subsection*{Question 1}
+What is the median population age for the countries which voted to take action against global warming? (round to 2 decimal places)
+
+\begin{framed}
+\begin{verbatim}
+describeBy(data$age, data$change=="1")
+\end{verbatim}
+\end{framed}
+%------------------------------------------------%
+\subsection*{Question 2}
+Run a logistic regression including all predictor variables. Which predictors are significant in this model?
+
+\begin{itemize}
+\item educ and age			
+\item educ, age, gdp	(NO)	
+\item gdp, age, co2			
+\item all of them		
+\end{itemize}	
+
+
+\begin{framed}
+\begin{verbatim}
+fit = glm(data$change ~ data$educ + data$age + 
+ data$gdp + data$co2, family = binomial) 
+summary(fit)
+\end{verbatim}
+\end{framed}
+%-----------------------------------------------------------%
+\subsection*{Question 3}
+
+What does the negative value for the estimate of educ means?
+
+\begin{itemize}
+\item Countries with a lower education index score are more likely to chose to act now			
+\item 
+\item Countries with a higher education index score are more likely to chose to wait and see			
+\item Educ and change are negatively correlated	(No)
+\item All of the above
+\end{itemize}
+
+%-----------------------------------------------------------%
+\subsection*{Question 4}
+What is the confidence interval for educ, using profiled log-likelihood? (round to 2 decimal places, and give the lower bound first and the upper bound second, separated by a space)
+	
+\begin{framed}
+\begin{verbatim}
+confint(fit)
+\end{verbatim}
+\end{framed}
+%-----------------------------------------------------------%
+\subsection*{Question 5}
+What is the confidence interval for age, using standard errors? (round to 2 decimal places, and give the lower bound first and the upper bound second, separated by a space)
+\begin{framed}
+\begin{verbatim}
+confint.default(fit)
+\end{verbatim}
+\end{framed}
+
+%-----------------------------------------------------------%
+\subsection*{Question 6}
+Compare the present model with a null model. What is the difference in deviance for the two models? (round to 2 decimal places)
+\begin{framed}
+\begin{verbatim}
+with(fit, null.deviance - deviance)
+\end{verbatim}
+\end{framed}
+
+%-----------------------------------------------------------%
+\subsection*{Question 7}
+How many degrees of freedom are there for the difference between the two models?
+\begin{framed}
+\begin{verbatim}
+with(fit, df.null - df.residual)
+\end{verbatim}
+\end{framed}
+
+%-----------------------------------------------------------%
+\subsection*{Question 8}
+
+Is the p-value for the difference between the two models significant?
+\begin{framed}
+\begin{verbatim}
+with(fit, pchisq(null.deviance-deviance, 
+  df.null-df.residual, lower.tail = FALSE))
+\end{verbatim}
+\end{framed}
+
+%-----------------------------------------------------------%
+\subsection*{Question 9}
+
+Do chi-squared values differ significantly if you drop \textbf{\textit{educ}} as a predictor in the model?
+
+\begin{framed}
+\begin{verbatim}
+library(aod)  
+wald.test(b = coef(fit), Sigma = vcov(fit), Terms = 2)
+\end{verbatim}
+\end{framed}
+%-----------------------------------------------------------%
+\subsection*{Question 10}
+
+What is the percentage of cases that can be classified correctly based on our model?
+
+\begin{framed}
+\begin{verbatim}
+ClassLog(fit, data$change)
+\end{verbatim}
+\end{framed}
+%-----------------------------------------------------------%
+\end{document}
