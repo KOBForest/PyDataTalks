@@ -1,0 +1,12 @@
+Picture archiving and communication system
+
+http://en.wikipedia.org/wiki/Picture_archiving_and_communication_system
+
+The communication with the PACS server is done through DICOM messages that are similar to DICOM image "headers", but with different attributes. A query (C-FIND) is performed as follows:
+The client establishes the network connection to the PACS server.
+The client prepares a C-FIND request message which is list of DICOM attributes.
+The client fills in the C-FIND request message with the keys that should be matched. E.g. to query for a patient ID, the patient ID attribute is filled with the patient's ID.
+The client creates empty (zero length) attributes for all the attributes it wishes to receive from the server. E.g. if the client wishes to receive an ID that it can use to receive images (see image retrieval) it should include a zero-length SOPInstanceUID (0008,0018) attribute in the C-FIND request messagee.
+The C-FIND request message is sent to the server.
+The server sends back to the client a list of C-FIND response messages, each of which is also a list of DICOM attributes, populated with values for each match.
+The client extracts the attributes that are of interest from the response messages objects.

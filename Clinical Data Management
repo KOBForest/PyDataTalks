@@ -1,0 +1,58 @@
+Clinical Data Management
+
+% http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3326906/
+Clinical Data Management (CDM) is a critical phase in clinical research, which leads to 
+generation of high-quality, reliable, and statistically sound data from clinical trials.
+
+This helps to produce a drastic reduction in time from drug development to marketing. 
+Team members of CDM are actively involved in all stages of clinical trial right from 
+inception to completion. They should have adequate process knowledge that helps maintain 
+the quality standards of CDM processes. 
+
+Various procedures in CDM including Case Report Form (CRF) designing, CRF annotation, 
+database designing, data-entry, data validation, discrepancy management, medical coding, 
+data extraction, and database locking are assessed for quality at regular intervals during a trial. 
+
+In the present scenario, there is an increased demand to improve the CDM standards to meet 
+the regulatory requirements and stay ahead of the competition by means of faster commercialization 
+of product. With the implementation of regulatory compliant data management tools, 
+CDM team can meet these demands. 
+
+Additionally, it is becoming mandatory for companies to submit the data electronically. 
+CDM professionals should meet appropriate expectations and set standards for data quality 
+and also have a drive to adapt to the rapidly changing technology. 
+
+This article highlights the processes involved and provides the reader an overview of 
+the tools  and standards adopted as well as the roles and responsibilities in CDM.
+
+
+%--------------------------------------------------------------------------------------%
+
+\section{Clinical Trial Definitions}
+
+\subsection{Cross-sectional study}
+
+In a cross-sectional study the data are obtained from a random sample of the population at one
+point in time. This gives a snapshot of a population.
+
+Example: Based on a single survey of a speciﬁc population or a random sample thereof, we
+determine the proportion of individuals with heart disease at one point in time. This is referred to
+as the prevalence of disease. We may also collect demographic and other information which will
+allow us to break down prevalence broken by age, race, sex, socio-economic status, geographic,
+etc.
+
+\subsection{Longitudinal studies}
+
+In a longitudinal study, subjects are followed over time and single or multiple measurements of
+the variables of interest are obtained. Longitudinal epidemiological studies generally fall into
+two categories; prospective i.e. moving forward in time or retrospective going backward in
+time. We will focus on the case where a single measurement is taken.
+
+\subsection{Prospective study} In a prospective study, a cohort of individuals are identiﬁed who are free
+of a particular disease under study and data are collected on certain risk factors; i.e. smoking
+status, drinking status, exposure to contaminants, age, sex, race, etc. These individuals are
+then followed over some speciﬁed period of time to determine whether they get disease or not.
+The relationships between the probability of getting disease during a certain time period (called
+incidence of the disease) and the risk factors are then examined.
+
+\end{document}
