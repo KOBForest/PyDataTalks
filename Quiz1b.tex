@@ -1,0 +1,102 @@
+Question 8
+Researchers would like to conduct a study of n healthy adults to detect a four year mean brain volume loss of .01 mm3. Assume that the standard deviation of four year volume loss in this population is .04 mm3. What would be the value of n needded for 90% power of type one error rate of 5% one sided test versus a null hypothesis of no volume loss?
+
+Your Answer                Score        Explanation
+Around 140                        
+Around 20                        
+Around 50        Inorrect        0.00        
+Around 100                        
+Total                0.00 / 1.00        
+Question Explanation
+
+The hypothesis is H0:μΔ=0 versus Ha:μΔ>0 where μΔ is volume loss (change defined as Baseline - Four Weeks). The test statistics is X¯Δ.04/n√ which is rejected if it is larger than Z.95=1.645.
+We want to calculate
+P(X¯ΔσΔ/n√>1.645 | μΔ=.01)=P(X¯Δ−.01.04/n√>1.645−.01.04/n√ | μΔ=.01)=P(Z>1.645−n√/4)=.90
+So we need 1.645−n√/4=Z.10=−1.282 and thus n=(4∗(1.645+1.282))2.
+
+ceiling((4 * (qnorm(0.95) - qnorm(0.1)))^2)
+[1] 138
+Question 9
+The Daily Planet ran a recent story about Kryptonite poisoning in the water supply after a recent event in Metropolis. Their usual field reporter, Clark Kent, called in sick and so Lois Lane reported the stories. Researchers plan to sample 288 individuals from Metropolis and control city Gotham and will compare mean blood Kryptonite levels (in Lex Luthors per milliliter, LL/ml). The expect to find a mean difference in LL/ml of around 2. Assoming a two sided Z test of the relevant hypothesis at 5%, what would be the power. Assume that the standard deviation is 12 for both groups.
+
+Your Answer                Score        Explanation
+Around 70%                        
+Around 40%        Inorrect        0.00        
+Around 90%                        
+Around 20%                        
+Around 10%                        
+Around 30%                        
+Around 80%                        
+Around 60%                        
+Around 50%                        
+Total                0.00 / 1.00        
+Question Explanation
+
+H0:μMetropolis=μGotham versus Ha:μMetropolis≠μGotham.
+
+Let
+ts=X¯Metropolis−X¯Gothamσ(1nMetropolis+1nGotham)½
+We will reject if abs(ts)>1.96. Thus we want
+P(|ts|>1.96)=P(|X¯Metropolis−X¯Gotham|>1.96∗σ(1nMetropolis+1nGotham)½)
+where the probability is calculated under the alternative. Note σ(1nMetropolis+1nGotham)½=1. Under Ha X¯Metropolis−X¯Gotham is N(2,1).
+
+pnorm(-1.96, mean = 2, sd = 1) + pnorm(1.96, mean = 2, sd = 1)
+[1] 0.4841
+Note the first probability is effectively 0, so people usually don't even bother calculating it.
+
+Question 10
+As you increase the type one error rate, α, what happens to power?
+Your Answer                Score        Explanation
+It is impossible to say                        
+The power goes down                        
+The power goes up                        
+Power stays the same                        
+Total                0.00 / 1.00        
+Question Explanation
+
+As you require less evidence to reject, i.e. your α rate goes up, you will have larger power.
+Question 11
+Consider a setting with iid data from a N(μ,σ2) distribution testing H0:μ=0 verus Ha:μ>0. The null hypothesis is rejected if n√X¯/σ>1.645. What happens to the type I error rate as n goes to infinity?
+
+Your Answer                Score        Explanation
+It is 5% regardless of the size of n        Correct        1.00        
+It limits to 5%, but can be a different value for small sample sizes                        
+It is 10% regardless of the size of n                        
+It limits to 10%, but can be a different value for small sample sizes                        
+Total                1.00 / 1.00        
+Question Explanation
+
+The type 1 error rate is set to be .05 by choosing the value 1.645. Since the data are assumed Gaussian with a known variance, the type one error rate is not approximate by the CLT. Thus it is .05 regardless of the size of n.
+
+Question 12
+Suppose that you have three independent samples from a N(μ1,σ2), N(μ2,σ2) and N(μ3,σ2) respectively of size n1, n2 and n3. Let S21, S22 and S23 be the associated sample variances. Define the pooled variance as
+S2p=(n1−1)S21+(n2−1)S22+(n3−1)S23n1+n2+n3−3
+Consider testing H0:aμ1+bμ2+cμ3=0. Let
+TS=aX¯1+bX¯2+cX¯3Sp(a2n1+b2n2+c2n3)1/2
+What distribution do you think TS has under H0?
+
+Your Answer                Score        Explanation
+A T distribution with n1+n2+n3−3 degrees of freedom.        Correct        1.00        
+Standard normal.                        
+Approximately T distributed                        
+Chi squared with n1+n2+n3−3 df                        
+Total                1.00 / 1.00        
+Question Explanation
+
+Note that (n1+n2+n3)S2p/σ2 is Chi Squared with n1+n2+n3 df, as it is the sum of three independent Chi squared rvs. Also aX¯1+bX¯2+cX¯3 is N(0,σ2(a2n1+b2n2+c2n3)) under H0. Thus putting these two together we see that TS is standard normal divided by a Chi squared divided by its degrees of freedom. (With some hand waiving about independence.)
+
+Question 13
+Consider a one sample Z test of $H_0 : \mu = \mu_0$ versus $H_a : \mu > \mu_0$. All else equal, which scenarios will be closer to rejecting the null hypothesis?
+Your Answer                Score        Explanation
+X¯ is small, μ0 is large, σ is small                        
+X¯ is large, μ0 is large, σ is small                        
+X¯ is small, μ0 is small, σ is small                        
+X¯ is large, μ0 is small, σ is large        Inorrect        0.00        
+X¯ is large, μ0 is large, σ is large                        
+X¯ is small, μ0 is large, σ is large                        
+X¯ is large, μ0 is small, σ is small                        
+X¯ is small, μ0 is small, σ is large                        
+Total                0.00 / 1.00        
+Question Explanation
+
+Confusing, but conceptually easy problem. The test statistic is n√(X¯−μ0)/σ If X¯ is large, μ0 and σ is small, the test statistic will be large and we'll be most inclined to reject.
