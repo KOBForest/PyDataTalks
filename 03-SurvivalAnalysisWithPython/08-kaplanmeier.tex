@@ -1,0 +1,19 @@
+	\section{Kaplan-Meier Model}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		\noindent \textbf{Kaplan-Meier Model}
+		
+		\begin{itemize}
+			\item This model gives us a maximum-likelihood estimate of the survival function $\hat{S}(t)$ like that shown in the first diagram above.
+			
+			% S^(t)= \prod ti<t \frac{ni−di}{ni}
+			
+			where dd and nn are respectively the count of 'death' events and individuals at risk at timestep ii.
+			
+			\item The cumulative product gives us a non-increasing curve where we can read off, at any timestep during the study, the estimated probability of survival from the start to that timestep. 
+			\item We can also compute the estimated survival time or \textbf{\textit{median survival time (half-life)}} as shown above.
+		\end{itemize}
+		
+	\end{frame}
+	

@@ -1,0 +1,99 @@
+\documentclass[Master.tex]{subfiles}
+\begin{document}
+
+%-https://github.com/joshday/OnlineStats.jl/blob/master/doc/index.md
+
+\begin{frame}
+\frametitle{Statistics with Julia}
+\noindent \textbf{OnlineStats.jl}
+\begin{itemize}
+	\item \texttt{OnlineStats.jl} provides online algorithms for statistical models.
+	
+\item Online algorithms are well suited for streaming data or when data is too large to hold in memory.
+	
+\item Observations are processed one at a time and all algorithms use O(1) memory.
+	
+\end{itemize}
+
+
+\textit{https://github.com/joshday/OnlineStats.jl}
+\end{frame}
+%========================================================%
+\begin{frame}[fragile]
+\frametitle{Statistics with Julia}
+%
+%Overview
+%
+%Every OnlineStat is a Type
+
+\begin{verbatim}
+using OnlineStats
+o = Mean()
+
+All OnlineStats can be updated
+
+y = randn(100)
+
+for yi in y
+fit!(o, y)
+end
+
+# or more simply:
+fit!(o, y)
+OnlineStats share a common interface
+
+value(o)  # associated value of an OnlineStat
+nobs(o)   # number of observations used
+\end{verbatim}
+
+
+\end{frame}
+%========================================================%
+\begin{frame}[fragile]
+\noindent \textbf{What Can OnlineStats Do?}	
+While many estimates can be calculated analytically with an online algorithm, several type rely on stochastic approximation.
+\begin{verbatim}
+Summary Statistics
+
+Mean: Mean, Means
+Variance: Variance, Variances
+Quantiles: QuantileMM, QuantileSGD
+Covariance Matrix: CovMatrix
+Maximum and Minimum: Extrema
+Skewness and Kurtosis: Moments
+Sum/Differences: Sum, Sums, Diff, Diffs
+Density Estimation
+\end{verbatim}
+\end{frame}
+%========================================================%
+\begin{frame}[fragile]
+	\begin{verbatim}
+distributionfit(D, data)
+For D in [Beta, Categorical, Cauchy, Gamma, LogNormal, Normal, Multinomial, MvNormal]
+Gaussian Mixtures: NormalMix
+Predictive Modeling
+\end{verbatim}
+\end{frame}
+%========================================================%
+\begin{frame}[fragile]
+	\begin{verbatim}
+Linear Regression: LinReg, StatLearn
+Logistic Regression: StatLearn
+Poisson Regression: StatLearn
+Support Vector Machines: StatLearn
+Quantile Regression: StatLearn, QuantRegMM
+Huber Loss Regression: StatLearn
+L1 Loss Regression: StatLearn
+\end{verbatim}
+\end{frame}
+%========================================================%
+\begin{frame}[fragile]
+Other
+\begin{verbatim}
+K-Means clustering: KMeans
+Bootstrapping: BernoulliBootstrap, PoissonBootstrap
+Approximate count of distinct elements: HyperLogLog
+\end{verbatim}
+
+\end{frame}
+\end{document}

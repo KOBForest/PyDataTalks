@@ -1,0 +1,35 @@
+\documentclass{beamer}
+
+\usepackage{framed}
+\usepackage{amsmath}
+
+\begin{document}
+\section{Lifelines Documentation}
+\begin{frame}
+\noindent \textbf{Applications}
+Traditionally, survival analysis was developed to measure lifespans of individuals. An actuary or health professional would ask questions like “how long does this population live for?”, and answer it using survival analysis. For example, the population may be a nation’s population (for actuaries), or a population sticken by a disease (in the medical professional’s case). Traditionally, sort of a morbid subject.
+\end{frame}
+%==========================================%
+\begin{frame}
+The analysis can be further applied to not just traditional births and deaths, but any duration. Medical professional might be interested in the time between childbirths, where a birth in this case is the event of having a child , and a death is becoming pregnant again! (obviously, we are loose with our definitions of birth and death) Another example is users subscribing to a service: a birth is a user who joins the service, and a death is when the user leaves the service.
+\end{frame}
+%==========================================%
+\begin{frame}
+Censorship
+At the time you want to make inferences about durations, it is possible, likely true, that not all the death events have occured yet. For example, a medical professional will not wait 50 years for each individual in the study to pass away before investigating – he or she is interested in the effectiveness of improving lifetimes after only a few years, or months possibly.
+\end{frame}
+%==========================================%
+\begin{frame}
+The individuals in a population who have not been subject to the death event are labeled as right-censored, i.e. we did not (or can not) view the rest of their life history due to some external circumstances. All the information we have on these individuals are their current lifetime durations (which is naturally less than their actual lifetimes).
+
+Note
+
+There is also left-censorship, where an individuals birth event is not seen.
+A common mistake data analysts make is choosing to ignore the right-censored individuals. We shall see why this is a mistake next:
+\end{frame}
+%==========================================%
+\begin{frame}
+Consider a case where the population is actually made up of two subpopulations, AA and BB. Population AA has a very small lifespan, say 2 months on average, and population BB enjoys a much larger lifespan, say 12 months on average. We might not know this distinction before hand. At t=10t=10, we wish to investigate the average lifespan. Below is an example of such a situation.
+\end{frame}	
+
+\end{document}

@@ -1,0 +1,116 @@
+
+	\section{Censoring}
+	\begin{frame}
+		
+		\textbf{Censoring}\\
+		\begin{itemize}
+			\item One important concept in survival analysis is censoring. 
+			\item The survival times of some individuals might not be fully observed due to different reasons. 
+			\item In life sciences, this might happen when the survival study (e.g., the clinical trial) stops before the full survival times of all individuals can be observed, or a person drops out of a study, or for long-term studies, when the patient is lost to follow up. 
+			\item In the industrial context, not all components might have failed before the end of the reliability study. 
+			\item In such cases, the individual survives beyond the time of the study, and the exact survival time is unknown. This is called right censoring.
+		\end{itemize}
+		
+	\end{frame}
+	%==============================================%
+	\begin{frame}	
+		\frametitle{Survival Analysis}
+		\begin{itemize}
+			\item 	During a survival study either the individual is observed to fail at time T, or the observation on that individual ceases at time c. 
+			\item Then the observation is\textbf{\textit{ min(T,c)}} and an indicator variable Ic shows if the individual is censored or not. 
+			\item The calculations for hazard and survivor functions must be adjusted to account for censoring. 
+			\item Statistics and Machine Learning Toolbox functions such as ecdf, ksdensity, coxphfit, mle account for censoring.
+		\end{itemize}
+		
+	\end{frame}
+	%==============================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		\noindent \textbf{Censoring}	\\ \smallskip
+		
+		
+		\begin{itemize}
+			\item Censoring is a type of missing data problem common in survival analysis. 
+			\item Other popular comparison methods, such as linear regression and t-tests do not properly accommodate for censoring. 
+			\item This makes survival analysis attractive for data from randomized clinical studies.
+			
+		\end{itemize}
+		
+	\end{frame}
+	%==============================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		\noindent \textbf{Types of Censoring}	\\ \smallskip
+		In an ideal scenario, both the birth and death rates of a patient is known, which means the lifetime is known.
+		\begin{itemize}
+			\item \textbf{Right censoring} occurs when the 'death' is unknown, but it is after some known date. e.g. The 'death' occurs after the end of the study, or there was no follow-up with the patient.
+			\item \textbf{Left censoring} occurs when the lifetime is known to be less than a certain duration. e.g. Unknown time of initial infection exposure when first meeting with a patient.
+		\end{itemize}
+	\end{frame}
+	%==============================================%
+	
+	\section{Censoring and truncation}
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		\noindent \textbf{Censoring and truncation}
+		\begin{itemize}
+			\item We're measuring time-to-event in the real world and so there's practical constraints on the period of study and how to treat individuals that fall outside that period. Censoring is when the event of interest (repair, first sale, etc) occurs outside the study period, and truncation is due to the study design.
+			
+			\item The following discussion continues our hypothetical truck maintenance study:
+			
+			\item We imagine that our data source is a set of database extracts taken at the start of 2014 for a 3-year period from mid-2010 to mid-2013, and this is all of the data we could extract from the company database
+		\end{itemize}
+		
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		
+		It may be that we have very little data about service-intervals longer than 24 months, so despite the study period covering 36 months, when we calculate survival curves we decide to only look at the first 24 months of a trucks life
+		
+		All trucks remain in daily operation through end-2014, none are sold or scrapped.
+	\end{frame}
+\end{document}	
+%=================================%
+\begin{frame}
+	\frametitle{Survival Analysis}
+	Example of censoring in our truck maintenance study
+	
+	We observe:
+\begin{itemize}
+	\item 	Truck A was purchased at start-2011 and first serviced 21 months later. It has a first-service-period or 'survival' of 21 months
+	
+\item Truck B was also purchased at start-2011 but first serviced 9 months later. This 9-month survival is much shorter than for Truck A: perhaps it has a different manufacturer or was driven differently. The various survival models let us explore these factors in different ways
+\end{itemize}	
+
+\end{frame}
+%=================================%
+\begin{frame}
+	\frametitle{Survival Analysis}
+\begin{itemize}
+	\item 	Truck C was first serviced in Feb 2012, but purchased prior to the start of our study period. This left-truncation is a consequence of our decision to start the study period at mid-2010, and we may mitigate by adjusting the start of the study period or adjusting the lifetime value of the truck
+	
+\item Truck D was purchased in Feb 2010 and serviced soon afterwards - both prior to the study period - so we did not observe the service event during the study. In fact, if we're strict about our data sampling then we wouldn't even know about this event from our database extract. The need to account for such left-censoring is rarely encountered in practice
+\end{itemize}
+
+\end{frame}
+%=================================%
+\begin{frame}
+	\frametitle{Survival Analysis}
+\begin{itemize}
+	\item 	Truck E was purchased in Jun 2012 and by the end of the study in mid-2013 it had still not gone for first service. This right-censoring is very common in survival analysis
+	
+\item	Truck F does not appear at all in the purchases database and the first time we learn it exists is from the record of its first maintenance service during 2012. We are unlikely to encounter such right-truncation in practice, since we're dealing with well-kept database records for purchases.
+\end{itemize}
+
+\end{frame}
+%=================================%
+\begin{frame}
+	\frametitle{Survival Analysis}
+	Censoring and truncation differ from one analysis to the next and it's always vitally important to understand the limitations of the study and state the heuristics used. Generally, one can expect to deal often with right-censoring, occasionally with left-truncation, and very rarely with left-censoring or right-truncation.
+	
+	What models can we use?
+	The very simplest survival models are really just tables of event counts: non-parametric, easily computed and a good place to begin modelling to check assumptions, data quality and end-user requirements etc.
+\end{frame}
+
+\end{document}

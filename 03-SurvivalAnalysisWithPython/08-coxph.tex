@@ -1,0 +1,125 @@
+	\section{Cox Proportional Hazards Model}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		\noindent \textbf{Cox Proportional Hazards Model}
+		
+		\begin{itemize}
+			\item Having computed the survival function4 for a population, the logical next step is to understand the effects of different characteristics of the individuals. 
+			\item In our truck example above, we might want to know whether maintenance periods are affected more or less by mileage, or by types of roads driven, or the manufacturer, model or load-capacity of truck etc.
+		\end{itemize}
+		
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		\begin{itemize}
+			\item The Cox PH model gives a semi-parametric method of estimating the hazard function at time $t$ given a baseline hazard that's modified by a set of covariates:
+			
+			\[\lambda(t)=b_0(t)exp(b)1x_1+...+b_Nx_n)\]
+			
+			where $\lambda_0(t)$ is the non-parametric baseline hazard function and $\beta_X$ is a linear parametric model using features of the individuals, transformed by an exponential function.
+		\end{itemize}
+		
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		\begin{itemize}
+			\item We can now make comparative statements such as "the hazard rate for trucks from manufacturer A is 2x greater than for manufacturer B", or "trucks that drive 100 fewer km per week tend to have their first service up to 6 months later" etc.
+		\end{itemize}
+		
+		
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		There's many more models...
+		
+		Survival analysis has been developed by many hands over many years and there's an embarassment of riches in the literature, including:
+		
+		Parametric / Accelerated Failure Time models, using:
+		\begin{itemize}
+			\item Exponential
+			\item Gompertz
+			\item Weibull
+		\end{itemize}
+		
+		
+		Log-logistic link functions
+		Aalen Additive model
+		Bayesian inferential models
+		... but we'll save the detail on those for specific examples in future posts in this series.
+	\end{frame}
+	
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		Recap
+		\begin{itemize}
+			\item It takes a surprising amount of detail to explain the basics of survival analysis, so thank you for reading this far! 
+			\item As noted above, time-to-event analyses are very widely applicable to all sorts of real-world behaviours - not just studies of lifespan in actuarial or medical science.
+			
+			\item 	In the rest of this series we'll use a publicly available dataset to demonstrate implementing a survival model, interpreting the results, and we'll try to learn something along the way. 
+		\end{itemize}
+		
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		Continued in part 2
+		
+		As we noted previously, it was life-insurers who were among the first to employ strong data analysis in their profession. ↩
+		If you have an old watch (pre-2000) with "T SWISS MADE T" somewhere on the dial, the T indicates that a luminous Tritium-containing compound is painted onto the hands and dial. You'll probably also sadly notice that it's completely failing to glow in the dark because the radioactive half-life of ~12.4 years means there's very little Tritium left now. ↩
+		
+		For a thorough but easily-digested derivation of survival and hazard functions, see the Wikipedia page. ↩
+		The survival, hazard and cumulative hazard functions are often mentioned seemingly-interchangeably in casual explanations of survival analysis, since usually if you have one function you can have the other(s). In our experience its best to present results to general audiences as a computed survival curve regardless of the model used.
+		
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		
+		Let's find an interesting dataset
+		The quality and volume of open data - that which is freely available for reuse and analysis - has grown over recent years and if you look carefully, there's likely an interesting dataset that's ideal for your latest algorithm or visualisation1.
+		
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		In rough order of increasing data complexity and reducing cleanliness, good places to look for such data include:
+		
+		The UCI Machine Learning Repository - home to a few hundred classic datasets
+		Competitions on Kaggle - for better or worse these can be riddled with real-world data quality problems, and beware of licensing issues
+		The Wikimedia Foundation research team - lots of info on browsing and article content
+		Opened datasets from CrowdFlower a data-enrichment company
+		Government-curated open datasets from e.g. the UK, the EU, and USA - highly varying data quality throughout
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		This large list of publicly available datasets on Github
+		... and there's a huge amount of requests, discussion and links on the /r/datasets subreddit.
+		After a solid search, I came upon a rich dataset of hard drive failure data open sourced and made freely available by BackBlaze, an online file backup and storage company, in Feb 2015.
+		
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		The full dataset comprises nearly 20 months of logfiles describing the daily uptime and failure status of >40,000 harddrives installed at the company over the period April 2013 to Dec 2014 inclusive. The dataset contains information about the harddrive model and capacity, the dates of operation and failure and up to 40 different S.M.A.R.T. stats about each drive, potentially making for quite a rich survival analysis.
+	\end{frame}
+	%=================================%
+	\begin{frame}
+		\frametitle{Survival Analysis}
+		\begin{itemize}
+			\item What's even more interesting is that BackBlaze have undertaken and released their own analyses of hard drive reliability so we have something to compare.
+			
+			\item Preparing an analysis environment
+			We'll use an interactive Python environment for analysis and a Git repository for source control. 
+			
+			\item 	As mentioned in a previous post Python has become a default choice for many data scientists for most general work - thanks to it's wide range of libraries, high quality software engineering and increasingly excellent visualisation; and Git is of course a standard choice for distributed version control, vital for maintaining and sharing code.
+			
+			%\item	For now, I've decided to host the code and analyses from this short investigation on a Bitbucket repository. If you'd like named access then please feel free to get in touch.
+		\end{itemize}
+		
+	\end{frame}
