@@ -1,0 +1,90 @@
+
+\section{CONTOUR PLOTS WITH PYTHON AND PLOTLY}
+
+SOMETIMES I HAVE to write stuff so I won’t forget how to do it. This is one of those times. In my recent post on the angular size of a soccer goal, I created a contour plot. Despite what you might think, I’m not a Jedi Master at python. So, here is a quick guide to contour plots and heatmaps – you can think of this as a guide for physicists.
+
+What is a contour plot? What is a heatmap? These are both ways to display data over a 2 dimensional grid. Let’s look at a super simple example from the plotly heatmap tutorial. Oh, plotly is an awesome online graphing tool. You can enter data and plots manually or have data sent from python. You should check it out. Ok – back to heatmaps. Let’s start with a super simple grid to display. Here are 9 cells of data:
+
+Plotly   Online Graphing and Data Analysis
+
+Actually, you can enter this in manually in “Grid” mode in plotly. Then from the “make a plot” menu choose heatmap. This is what you get.
+
+
+Simple, right? Oh, but that’s not good enough for you. You don’t like having different colors represent different values in the grid. Well, then how about a 3d surface plot?
+
+
+Awesome, right?
+
+Entering values in manually may be straightforward – but it’s not always useful. Let’s do something with physics.
+
+ELECTRIC POTENTIAL
+
+Suppose I have two electric charges (q1 and q2) in some region of space. I can calculate the electric potential due to these two charges as just the sum of the electric potential due to each individual charge. Here is a diagram.
+
+Summer 14 Sketches key
+
+If I know the vector location of both the observation location (rloc) and the location of charge 2 (r2-pos), then I can find the vector from charge 2 to the observation location:
+
+La te xi t 1
+
+Now that I have this vector, I can find the magnitude of the vector and then the value of the electric potential.
+
+La te xi t 1
+
+Just a couple of physics notes:
+
+I wrote r as a scalar. This is the magnitude of the vector r.
+The 1 over 4πε0 is just a constant.
+Electric potential is a scalar quantity, not a vector.
+This is technically the electric potential with respect to infinity.
+You can’t find the electric potential at the location of a point charge since you would be dividing by zero.
+Here is a more detailed overview of electric potential.
+Now for the plot. Here is what I want to do: calculate the electric potential for two point charges. Charge 1 will have a charge of +1 x 10-6 C and charge 2 will be -1 x 10-6C. I will put charge one at the location (0.02, 0.02, 0) meters and (0.03, 0.03, 0) meters.
+
+PLOTTING POTENTIAL
+
+Now we are ready to make a plot. Here is the code that I will be using, but let me go over a few key parts.
+
+The mesh is the most important part of the program. Check out this code:
+
+ Electric Potential 2 py    Users Rjallain Projects Python Electric Potential 2 py 
+
+First, there is the x and y sets. The “arange” function in pylab (which you would have to load at the top) makes a list of numbers from 0 to 0.05 in increments of 0.001. So, x and y are just two lists.
+
+The line with the mesh grid makes an array that is x by y. Actually, this makes two arrays. Let’s look at a simpler version. Suppose I have x and y go from 0 to 1 with 0.25 increments. The meshgrid would make these two arrays.
+
+Python 2 7 6 Shell
+
+
+If that doesn’t make sense – don’t worry. It doesn’t really make too much sense to me either. The best plan is to just use this for a while until you get the hang of it.
+
+The next important part is this double loop.
+
+ Electric Potential 2 py    Users Rjallain Projects Python Electric Potential 2 py 
+
+This goes through all the values in both the X and Y meshes. The key idea is that I can say X[i,j] an Y[i,j] are the x and y values at the i j location in the mesh.
+
+ Electric Potential 2 py    Users Rjallain Projects Python Electric Potential 2 py 
+
+Next, I make a vector for the location that I want to find the potential (r_loc) as well as the vector from each charge to this location.
+
+ Electric Potential 2 py    Users Rjallain Projects Python Electric Potential 2 py 
+
+Before calculating the potential (which I already set to zero at every point), I need to make sure that the observation location is not at one of the point charges. If it is, the calculation for the potential would have a division by zero – and I don’t want to see that. Nobody wants to see that. After calculating the potential, I check to make sure the value isn’t too high. If it is, I set it to some maximum value. Why? If you have one value that is too high, then all of the interesting data will be at near the same value – it will look boring.
+
+ Electric Potential 2 py    Users Rjallain Projects Python Electric Potential 2 py 
+
+You need to send three things to plotly – the x, y, and V data. For the type of plot, you could have a ‘contour’ or ‘heatmap’ – technically, you can do a surface plot also (I think this is still experimental though).
+
+Boom. That’s it. Here is the final plot (I increased the number of data points so that it looks prettier).
+
+
+Fun stuff. Some final Notes:
+
+I like to import the vector from VPython. Why? Because it’s always easier to write things as a vector when it’s actually a vector. Also, VPython did all the hard work in making the vectors.
+Do you actually have to go through each element in the meshgrid? No. Try making V=X*Y and plotting that. Python can handle these array calculations. I don’t like to do this because I couldn’t (at least not easily in my mind) use vectors. By going through each data point, I can both use vectors and check to make sure the potential values are behaving.
+Did I do some things the hard way? Absolutely. However, I like to remind everyone that I am just a human. It’s better have sloppy code that you made yourself than some pre-built code that you have no idea how it works.
+Ok, go practice. Make some type of three dimensional plot. Plot the gravitational potential of the Earth-moon system. Plot the fake gravitational potential of a Lagrange point. Make some plot of a random function. Just make any plot now. Practice it now so that when you actually need to make a plot you will be prepared.
+
+One last reminder – I am not a python expert, I just play one on this blog.  Surely there are better ways to do these things.  If you have any suggestions, add them in the comments.  That way, the next time I do a search for  “3d plot in plotly” I will find this post and the comments will be useful to me (in the future).
+Use of this site constitutes acceptance of our user agreement (effective 3/21/12) and privacy policy (effective 3/21/12). Affiliate link policy. Your California privacy rights. The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with the prior written permission of Condé Nast.

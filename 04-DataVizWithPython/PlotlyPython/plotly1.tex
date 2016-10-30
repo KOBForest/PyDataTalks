@@ -1,0 +1,83 @@
+CREATING PLOTS WITH PYTHON AND PLOTLY
+
+
+EVERYONE LOVES GRAPHS. When I need to make a plot with some data or a calculation, I almost always use python with matplotlib. It works quite well and produces non-ugly graphs. Most of the stuff you see in my posts are created with matplotlib. In general, I don’t recommend plotting in python. Instead I recommend picking some tool and becoming proficient with it. Maybe your favorite tool is Vernier’s Logger Pro or it could be Mathematica. The point is that once you feel comfortable with that tool, it will be easier to use.
+
+Sometimes there is a new tool I would like to try. In this case, it is the web-based plot.ly. Of course there are other online plotting tools, but there is something I like about plotly. You can make plotly plots from python. YAY.
+
+%====================================%
+\section{PLOTLY PYTHON PLOTTING}
+
+I’m not a plotly expert yet. The best way to become an expert is to act like one. Here is a guide to making a python graph with plotly.
+
+Install the plotly module. I assume you already have python installed. After that, you also need the plotly API module. Just head over to plotly to get the instructions for this installation.
+
+Create a plotly account. This is pretty simple. Just go to plot.ly and click the sign up button. Once you sign up, you will get an API key. You will need this so you can have python send your data to plotly.
+
+Add Stuff to Python. Let me just start with a example. Here is a short code that plots the vertical position for a ball tossed in the air.
+
+%===================================%
+import plotly
+
+py = plotly.plotly(username='**username**', key='**put your api key here**')
+
+
+y=0
+t=0
+dt=0.01
+g=9.8
+v=4
+yp=[]
+tp=[]
+
+while y>=0:
+    v=v-g*dt
+    y=y+v*dt
+    t=t+dt
+    yp=yp+[y]
+    tp=tp+[t]
+
+
+
+response=py.plot(tp,yp)
+url=response['url']
+filename=response['filename']
+print(url)
+print(filename)
+%=======================================================%
+That’s the code. Here are the important parts.
+
+Line 1: This is where you set up your stuff for plotly. In case you can’t tell, I didn’t put in my username and key – you can put your own in there. Just to be clear, change both username and key.
+Line 6 – 10: This just sets up the initial variables for my little projectile motion code.
+Line 11 – 12: These are two empty lists. In order to make a plot, I need to give plotly a list of values. As I go through each step in the calculation, I will add a value to the list.
+Line 23: Here I send the data to plotly. This gives the horizontal values (tp) and the vertical values (yp) for the graph.
+Really, you don’t need the other lines. HOWEVER, if you want to know the url of the graph, then print it out. The same is true for the file name. Of course, you could also just log into your plotly account and see what graphs are there.
+And this is the graph from that program.
+
+Plot From api  15  png 2
+
+%=============================================%
+
+If you look at this plot online at https://plot.ly/~RhettAllain/15, you can do all sorts of cool stuff. First click the “save a copy” link on the left. This will make a copy for you to play with. Now, you can do the following:
+
+
+
+Change the colors and style of the graph – if that makes you happy (personally, I’m not much into design).
+Change the type of plot. Maybe you want to show the data points only or data points plus a line. Boom – you can do that.
+Give the graph a title and label the axes. That is something that needs to be done if you are going to actually use this.
+You could actually turn this into a bar graph or a newt if you really wanted to. Well, you could turn it into a bar graph at least.
+Mousing over the line will give you the values of the points. If you like, you can see ALL THE DATA by the “view data in grid” icon. Then you could change the data or use it somewhere else.
+Is that all? No. You can fit a function to the data also. Yes, in this case that seems silly – but I am going to do it anyway. Check this out.
+
+Plotly   Online Graphing and Data Analysis 2
+
+Not perfect, but still a nice graph.
+
+WHICH IS BETTER, MATPLOTLIB OR PLOTLY?
+
+Yes, this is a trick question. You really can’t say which is better. For me, I’m not sure which one I will use. I really like plotly since it lets me make a nice graph as well as give the user an interactive experience. However, at my current level perhaps matplotlib is still a bit faster. Also, there is another online graphing site – Desmos. This too makes very pretty graphs and has tons of nice features.
+
+How about I just try using plotly in a few posts and see if I like it? Yes, that’s what I should do.
+
+%================================================%
+

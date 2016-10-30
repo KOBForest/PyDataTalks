@@ -1,0 +1,155 @@
+3D Network Graphs in Python
+How to make 3D Network Graphs in Python.
+python
+Python
+%================================================================%
+3D Network Graphs with Plotly and igraph
+A 3D graph representing the network of coappearances of characters in
+Victor Hugo's novel Les Miserables
+We define our graph as an igraph.Graph object. Python igraph is a library for high-performance graph generation and analysis.
+In [9]:
+import igraph as ig
+%================================================================%
+Read graph data from a json file:
+In [10]:
+import json
+import urllib2
+
+data = []
+req = urllib2.Request("https://raw.githubusercontent.com/plotly/datasets/master/miserables.json")
+opener = urllib2.build_opener()
+f = opener.open(req)
+data = json.loads(f.read())
+
+print data.keys()
+Copy to clipboard!
+[u'nodes', u'links']
+
+Copy to clipboard!
+Get the number of nodes:
+In [11]:
+N=len(data['nodes'])
+N
+Copy to clipboard!
+Out[11]:
+77
+%================================================================%
+Define the list of edges and the Graph object from Edges:
+In [12]:
+L=len(data['links'])
+Edges=[(data['links'][k]['source'], data['links'][k]['target']) for k in range(L)]
+
+G=ig.Graph(Edges, directed=False)
+Copy to clipboard!
+Extract the node attributes, 'group', and 'name':
+In [13]:
+data['nodes'][0]
+%================================================================%
+Out[13]:
+{u'group': 1, u'name': u'Myriel'}
+Copy to clipboard!
+In [14]:
+labels=[]
+group=[]
+for node in data['nodes']:
+    labels.append(node['name'])
+    group.append(node['group'])
+Copy to clipboard!
+Get the node positions, set by the Kamada-Kawai layout for 3D graphs:
+In [15]:
+layt=G.layout('kk', dim=3)
+%================================================================%
+layt is a list of three elements lists (the coordinates of nodes):
+In [16]:
+layt[5]
+%================================================================%
+Out[16]:
+[-2.419184216272965, -5.200101033772013, 4.673402139645248]
+Copy to clipboard!
+Set data for the Plotly plot of the graph:
+In [17]:
+Xn=[layt[k][0] for k in range(N)]# x-coordinates of nodes
+Yn=[layt[k][1] for k in range(N)]# y-coordinates
+Zn=[layt[k][2] for k in range(N)]# z-coordinates
+Xe=[]
+Ye=[]
+Ze=[]
+for e in Edges:
+    Xe+=[layt[e[0]][0],layt[e[1]][0], None]# x-coordinates of edge ends
+    Ye+=[layt[e[0]][1],layt[e[1]][1], None]
+    Ze+=[layt[e[0]][2],layt[e[1]][2], None]
+Copy to clipboard!
+In [18]:
+import plotly.plotly as py
+from plotly.graph_objs import *
+Copy to clipboard!
+In [19]:
+trace1=Scatter3d(x=Xe,
+               y=Ye,
+               z=Ze,
+               mode='lines',
+               line=Line(color='rgb(125,125,125)', width=1),
+               hoverinfo='none'
+               )
+trace2=Scatter3d(x=Xn,
+               y=Yn,
+               z=Zn,
+               mode='markers',
+               name='actors',
+               marker=Marker(symbol='dot',
+                             size=6,
+                             color=group,
+                             colorscale='Viridis',
+                             line=Line(color='rgb(50,50,50)', width=0.5)
+                             ),
+               text=labels,
+               hoverinfo='text'
+               )
+%================================================================%
+In [20]:
+axis=dict(showbackground=False,
+          showline=False,
+          zeroline=False,
+          showgrid=False,
+          showticklabels=False,
+          title=''
+          )
+%================================================================%
+In [21]:
+layout = Layout(
+         title="Network of coappearances of characters in Victor Hugo's novel<br> Les Miserables (3D visualization)",
+         width=1000,
+         height=1000,
+         showlegend=False,
+         scene=Scene(
+         xaxis=XAxis(axis),
+         yaxis=YAxis(axis),
+         zaxis=ZAxis(axis),
+        ),
+     margin=Margin(
+        t=100
+    ),
+    hovermode='closest',
+    annotations=Annotations([
+           Annotation(
+           showarrow=False,
+            text="Data source: <a href='http://bost.ocks.org/mike/miserables/miserables.json'>[1]</a>",
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=0.1,
+            xanchor='left',
+            yanchor='bottom',
+            font=Font(
+            size=14
+            )
+            )
+        ]),    )
+Copy to clipboard!
+In [22]:
+data=Data([trace1, trace2])
+fig=Figure(data=data, layout=layout)
+
+py.iplot(fig, filename='Les-Miserables')
+Copy to clipboard!
+Out[22]:
